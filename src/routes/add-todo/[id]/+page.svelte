@@ -5,8 +5,6 @@
   id={$page.params.id} />
 </div>
 
-<div class="text-red-500">{ $page.params.id }</div>
-
 <script lang="ts">
   import TodoForm from '../../../components/todo-form.svelte'
   import { addTodo, updateTodo } from '../../../store/todo';
