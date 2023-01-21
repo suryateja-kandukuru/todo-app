@@ -4,7 +4,7 @@ export const SideNavList = [
     name: 'Add Todo'
   },
   {
-    route: '/view-todos-list',
+    route: '/todo-list',
     name: 'Todo List'
   },
   {

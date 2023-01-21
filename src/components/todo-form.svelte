@@ -26,6 +26,7 @@
 
 <script lang="ts">
   import { Input, Helper, Button, Toast } from 'flowbite-svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
 
   import { form, field } from 'svelte-forms';
   import { required } from 'svelte-forms/validators';
@@ -35,10 +36,23 @@
   // variables
   let dropdownName = 'high'
   let showToast = false
-
+  let formData: any = {}
   const todoStatus: string[] = ['high', 'medium', 'low']
   const todo = field('todo', '', [required()]);
   const todoForm = form(todo);
+
+  
+  const dispatch = createEventDispatcher();
+
+  onMount(() => {
+    console.log('On Mount')
+    todoForm.subscribe((res) => {
+      if(res.valid && res.dirty && !res.errors.length) {
+        console.log('xxx', res.summary)
+        formData = res.summary
+      }
+    })
+  })
 
   // functions
   const handleDropdownChange = ({ detail }: Record<string, any>) => {
@@ -46,8 +60,10 @@
   }
 
   const handleTodoSave = () => {
-    todoForm.subscribe((res) => {
-      console.log(res.summary)
+    dispatch('formValue', {
+      ...formData,
+      priority: dropdownName,
+      id: Number(Math.random() * 10000000).toFixed(0)
     })
     setRandomPriority()
     todoForm.reset()
@@ -58,7 +74,7 @@
     showToast = true
     setTimeout(() => {
       showToast = false
-    }, 2000)
+    }, 5000)
   }
 
   const setRandomPriority = () => {
