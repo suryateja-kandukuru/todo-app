@@ -9,7 +9,7 @@
   );
 
   const handleEdit = (id: number) => {
-    goto(`/edit-todo/${id}`)
+    goto(`/add-todo/${id}`)
   }
 
   const handleDetails = (item: any) => {

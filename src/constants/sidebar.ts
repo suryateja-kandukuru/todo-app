@@ -1,6 +1,6 @@
 export const SideNavList = [
   {
-    route: '/add-todo',
+    route: '/add-todo/null',
     name: 'Add Todo'
   },
   {

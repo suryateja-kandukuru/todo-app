@@ -24,3 +24,15 @@ export const addTodo = (todo: any) => {
 export const removeTodo = (id: number) => {
   todos.update(todos => todos.filter((ele) => ele.id !== id))
 }
+
+export const updateTodo = (todo: any)  => {
+  console.log('sss', todo)
+  todos.update((todos: any) => {
+    const index=  todos.findIndex((ele: any) => (ele.id) == todo.id)
+    console.log('res', todos[index])
+    if(index >=0) {
+      todos[index] = todo
+    }
+    return todos
+  })
+}
