@@ -2,7 +2,7 @@
   <SidebarWrapper divClass="h-screen bg-blue-500 pt-16">
     <SidebarGroup>
       {#each SideNavList as item }
-      <SidebarItem bind:label="{ item.name }">
+      <SidebarItem label="{ item.name }" href="{ item.route }">
       </SidebarItem>
       {/each}
     </SidebarGroup>
